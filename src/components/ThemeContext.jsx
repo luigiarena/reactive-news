@@ -1,4 +1,4 @@
-import React, { Children, createContext, useState } from 'react'
+import React, { Children, createContext, useState, useEffect } from 'react'
 
 const ThemeContext = createContext();
 
@@ -9,10 +9,16 @@ function ThemeProvider({ children }) {
     setDarkMode(prev => !prev);
   }
 
-  const values = { darkMode, setDarkMode, toggleThemes };
+  useEffect(() => {
+    if (darkMode) {
+      document.getElementById('root').classList.add('dark');
+    } else {
+      document.getElementById('root').classList.remove('dark');
+    }
+  }, [darkMode]);
 
   return (
-    <ThemeContext.Provider value={values}>
+    <ThemeContext.Provider value={{ darkMode, setDarkMode, toggleThemes }}>
       {children}
     </ThemeContext.Provider>
   )

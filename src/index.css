@@ -65,6 +65,13 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background: rgb(221, 221, 221);
+  transition: background 0.3s;
+}
+
+#root.dark {
+  background: rgb(37, 37, 37);
+  color: white;
 }
 
 h1,
