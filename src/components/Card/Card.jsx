@@ -15,7 +15,7 @@ function Card({ cardInfo }) {
                 <h2>{title}</h2>
             </div>
             <div className="card-body">
-                <img src={urlToImage} alt="" />
+                <div className="card-img"><img src={urlToImage} alt="" /></div>
                 <p>{description}</p>
             </div>   
             <div className="card-footer">
