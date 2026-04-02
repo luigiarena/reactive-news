@@ -28,10 +28,11 @@ function Card({ cardInfo }) {
 
 function CardsContainer() {
     const [newsList, setNewsList] = useState([]);
+    const params = useParams();
 
     useEffect(() => {
         async function fetchNews() {
-            const data = await newsApi.getNews();
+            const data = await newsApi.getCategoryNews(params.categoryName);
             setNewsList(data);
         }
         fetchNews();

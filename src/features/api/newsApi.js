@@ -1,11 +1,16 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
-const baseQuery = 'https://newsapi.org/v2/top-headlines';
-const params = `?country=us`;
+let baseQuery = 'https://newsapi.org/v2/top-headlines';
+let params = `?`;
 
 const apiKey = 'sample-key'; // Replace with a real key from newsapi.org
 
-const getNews = async () => {
+const getCategoryNews = async (category) => {
+    if (category) {
+        params += `category=${category}`;
+    } else {
+        params += 'country=us';
+    }
     return await fetch(`${baseQuery}${params}`, {
         method: 'GET',
         headers: {
@@ -22,7 +27,7 @@ const getNews = async () => {
 }
 
 const newsApi = {
-    getNews
+    getCategoryNews
 }
 
 export default newsApi;
