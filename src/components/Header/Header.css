@@ -11,6 +11,7 @@ header.header-container {
     top: 0;
     z-index: 10;
     box-shadow: 0 2px 8px #848181bf;
+    color: black;
 }
 
 header.header-container.dark {
@@ -20,7 +21,7 @@ header.header-container.dark {
 }
 
 header .logo {
-    width: 50px;
+    width: 40px;
     max-width: 160px;
     cursor: pointer;
 }

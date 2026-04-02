@@ -3,6 +3,7 @@ import { ThemeContext } from "../ThemeContext";
 
 import SearchBar from "./SearchBar";
 import "./Header.css";
+import logo from "../../assets/logo.png";
 import logo1 from "../../assets/logo-1.png";
 import logo2 from "../../assets/logo-2.png";
 import moon from "../../assets/moon-icon.svg";
@@ -14,8 +15,8 @@ export default function Header () {
     return (
         <header className={(darkMode ? "dark" : "" ) + " header-container"}>
             <div className="flex flex-row flex-1 items-center gap-2">
-                <img src={logo2} alt="" className="logo" />
-                <h3 className="page-title">Reddit reader</h3>
+                <img src={logo} alt="" className="logo" />
+                <h3 className="page-title font-black text-xl">Reactive news</h3>
             </div>
 
             <SearchBar />
