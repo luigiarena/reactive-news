@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { ThemeContext } from '../ThemeContext'
 import './Sidebar.css'
 
@@ -22,7 +23,10 @@ function Sidebar() {
             <h2>Categories</h2>
             <ul>
                 {categories.map((category) => (
-                    <li className="category" key={category}>{category}</li>
+                    <Link to={category === 'all' ? '/' : `/category/${category}`} 
+                        key={'link-' + category}>
+                        <li className="category" key={category}>{category}</li>
+                    </Link>
                 ))}
             </ul>
         </div>
