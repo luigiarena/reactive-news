@@ -6,11 +6,13 @@ let params = `?`;
 const apiKey = 'sample-key'; // Replace with a real key from newsapi.org
 
 const getCategoryNews = async (category) => {
+    let params = `?`;
     if (category) {
         params += `category=${category}`;
     } else {
         params += 'country=us';
     }
+    if (params === '?') params = '';
     return await fetch(`${baseQuery}${params}`, {
         method: 'GET',
         headers: {
