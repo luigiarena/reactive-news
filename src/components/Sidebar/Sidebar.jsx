@@ -1,10 +1,14 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCategory } from '../../features/slices/categorySlice'
 import { ThemeContext } from '../ThemeContext'
 import './Sidebar.css'
 
 function Sidebar() {
     const { darkMode } = useContext(ThemeContext);
+    const dispatch = useDispatch();
+    const params = useParams();
 
     const categories = [
         'all',
@@ -18,15 +22,25 @@ function Sidebar() {
         'world'
     ];
 
+    let cat = useSelector(
+        (state) => state.category.category
+    );
+
     return (
         <div className={"sidebar" + (darkMode ? " dark" : "")}>
             <h2>Categories</h2>
             <ul>
-                {categories.map((category) => (
-                    <Link to={category === 'all' ? '/' : `/category/${category}`} 
-                        key={'link-' + category}>
-                        <li className="category" key={category}>{category}</li>
-                    </Link>
+                {categories.map((category, index) => (
+                    <li className={"category" + (category === cat ? ' active' : '')} key={index} 
+                        onClick={() => {
+                            console.log('click su link cat: ' + category);
+                            dispatch(setCategory(category));
+                        }}>
+                        <Link to={category === 'all' ? '/' : `/category/${category}`} 
+                            key={'link-' + index}>
+                            {category}
+                        </Link>
+                    </li>
                 ))}
             </ul>
         </div>
