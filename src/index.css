@@ -52,6 +52,12 @@
   }
 }
 
+/* Root background animation */
+@keyframes fastParallaxBg {
+  0% { background-position: center 0px; }
+  100% { background-position: center -2500px; } /* Aumenta o diminuisci per regolare la velocità */
+}
+
 body {
   margin: 0;
 }
@@ -65,11 +71,18 @@ body {
   flex-direction: column;
   box-sizing: border-box;
   background: rgb(221, 221, 221);
+  background: rgb(221, 221, 221) url(./assets/sfondo4-25.png) repeat center;
+  background-size: 8%;
   transition: background 0.3s;
+
+  animation: fastParallaxBg linear;
+  animation-timeline: scroll();
 }
 
 #root.dark {
   background: rgb(37, 37, 37);
+  background: rgb(37, 37, 37) url(./assets/sfondo1-25.png) repeat center;
+  background-size: 30%;
   color: white;
 }
 
