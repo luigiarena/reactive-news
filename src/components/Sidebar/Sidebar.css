@@ -1,10 +1,10 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 10px;
     flex-grow: 1;
     padding: 20px;
-    background: #fff;
+    background: #fff9;
     border-radius: 10px;
     transition: background 0.3s;
     box-sizing: border-box;
@@ -12,11 +12,24 @@
     margin: 20px;
     max-height: max-content;
     align-items: center;
+    backdrop-filter: blur(2px);
 
     h2 {
         color: black;
         font-size: 18px;
     }
+
+
+    &.dark {
+        color: rgb(169, 169, 169);
+        background: #0009;
+        box-shadow: 1px 1px 4px #363636;
+    }
+
+    &.dark h2 {
+        color: white;
+    }
+
 
     .category {
         font-size: 14px;
@@ -75,15 +88,5 @@
     @media (min-width: 1024px) {
         margin-left: -20px;
         max-width: 200px;
-    }
-}
-
-.sidebar.dark {
-    color: rgb(169, 169, 169);
-    background: black;
-    box-shadow: 1px 1px 4px #363636;
-
-    h2 {
-        color: white;
     }
 }
