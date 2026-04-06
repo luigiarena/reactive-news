@@ -20,22 +20,20 @@ function Card({ cardInfo }) {
         dispatch(setSelectedCard(cardInfo));
     }
 
-    return (
-        <Link to={`/news/${cardInfo.title}`} onClick={handleCardClick}>            
-            <div className={(darkMode ? "dark" : "") + " card"}>
-                <div className="card-header">
-                    <h2>{title}</h2>
-                </div>
-                <div className="card-body">
-                    <div className="card-img"><img src={urlToImage} alt="" /></div>
-                    <p>{description}</p>
-                </div>   
-                <div className="card-footer">
-                    <span>Source: {sourceName}</span>
-                    <span>Date: {formattedDate}</span>
-                </div>
+    return (    
+        <Link className={(darkMode ? "dark" : "") + " card"} to={`/news/${cardInfo.title}`} onClick={handleCardClick}>    
+            <div className="card-header">
+                <h2>{title}</h2>
             </div>
-        </Link>
+            <div className="card-body">
+                <div className="card-img"><img src={urlToImage} alt="" /></div>
+                <p>{description}</p>
+            </div>   
+            <div className="card-footer">
+                <span>Source: {sourceName}</span>
+                <span>Date: {formattedDate}</span>
+            </div>
+        </Link>  
     )
 }
 
@@ -66,6 +64,10 @@ function CardDetails() {
                     <h2>{cardInfo.title}</h2>
                 </div>
                 <div className="card-body">
+                    <div className="flex justify-between items-center">
+                        <p><b>Author: </b>{cardInfo.author ? cardInfo.author : 'Unknown'}</p>
+                        <p><b>Date: </b>{new Date(cardInfo.publishedAt).toLocaleDateString()}</p>
+                    </div>
                     <div className="card-img">
                         <img src={cardInfo.urlToImage} alt="" />
                     </div>
@@ -93,10 +95,8 @@ function CardsContainer() {
             {
                 !newsList ?
 
-                    (<>
-                        <h3>Nessun risultato trovato</h3>
-                        <Card key={0} cardInfo={{title: 'Nessun titolo trovato', description: 'Nessuna descrizione trovata'}} />
-                    </>)
+                <Card key={0} cardInfo={{title: 'Nessun titolo trovato', description: 'Nessuna descrizione trovata'}} />
+                    
                 :
 
                 newsList.slice().map((item, index) => {
