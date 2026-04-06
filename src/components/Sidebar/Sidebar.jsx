@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCategory } from '../../features/slices/categorySlice'
+import { setCategory, setQuery } from '../../features/slices/searchSlice'
 import { ThemeContext } from '../ThemeContext'
 import './Sidebar.css'
 
@@ -23,7 +23,8 @@ function Sidebar() {
     ];
 
     let cat = useSelector(
-        (state) => state.category.category
+        (state) => state.search.category
+    );
     );
 
     return (
@@ -33,7 +34,7 @@ function Sidebar() {
                 {categories.map((category, index) => (
                     <li className={"category" + (category === cat ? ' active' : '')} key={index} 
                         onClick={() => {
-                            console.log('click su link cat: ' + category);
+                            dispatch(setQuery(''));
                             dispatch(setCategory(category));
                         }}>
                         <Link to={category === 'all' ? '/' : `/category/${category}`} 
