@@ -19,6 +19,7 @@ function App() {
             <Route path="/" element={<CardsContainer />} />
             <Route path="/category/:categoryName" element={<CardsContainer />} />
             <Route path="/news/:titolo" element={<CardDetails />} />
+            <Route path="/search/:searchTerm" element={<CardsContainer />} />
           </Routes>
         </main>
       </ThemeProvider>
